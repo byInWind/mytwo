@@ -6,16 +6,21 @@ require.config({
     cookie: 'jquery-cookie/jquery.cookie',
     echarts: 'echarts/echarts.min',
     template: 'artTemplate/template-web',
+    bootstrap: 'bootstrap/js/bootstrap.min',
     //自己的
     common: '../js/common',
-    status:'../js/status',
+    status: '../js/status',
     login: '../js/login',
     index: '../js/index',
     teacherlist: '../js/teacher-list',
     teacheradd: '../js/teacher-add',
     courselist: '../js/course-list',
     courseadd: '../js/course-add',
-    util:'../js/util'
+    util: '../js/util'
   },
-  shim: {}
+  shim: {
+    bootstrap: {
+      deps: ['jquery']
+    }
+  }
 })

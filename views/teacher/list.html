@@ -66,47 +66,8 @@
       </div>
       <div class="panel-body">
         <table class="table table-bordered table-condensed">
-          <tbody>
-          <tr>
-            <th>姓名:</th>
-            <td>赵玉川</td>
-            <th>职位:</th>
-            <td colspan="3">讲师</td>
-            <td rowspan="4" width="128">
-              <div class="avatar">
-                <img src="./images/default.png" alt="">
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>花名:</th>
-            <td>麻衣长老</td>
-            <th>出生日期:</th>
-            <td colspan="3">2015-11-13</td>
-          </tr>
-          <tr>
-            <th>性别:</th>
-            <td>男</td>
-            <th>出生日期:</th>
-            <td colspan="3">1985-05-25</td>
-          </tr>
-          <tr>
-            <th>手机号码:</th>
-            <td colspan="2">13051524959</td>
-            <th>邮箱:</th>
-            <td colspan="2">zhaoyuchuan@itcast.cn</td>
-          </tr>
-          <tr>
-            <th>籍贯:</th>
-            <td colspan="6">河北省 保定市 曲阳县</td>
-          </tr>
-          <tr>
-            <td colspan="7">
-              <div class="introduce">
-                <p>豫章故郡，洪都新府。。</p>
-              </div>
-            </td>
-          </tr>
+          <tbody id="modalInfo">
+          <!-- 模板渲染-->
           </tbody>
         </table>
       </div>
@@ -114,7 +75,56 @@
   </div>
 </div>
 <!--模态框-->
-
+<script type="text/template" id="tpltwo">
+  <tr>
+    <th>姓名:</th>
+    <td>{{tc_name}}</td>
+    <th>职位:</th>
+    <td colspan="3">讲师</td>
+    <td rowspan="4" width="128">
+      <div class="avatar">
+        {{if tc_avatar}}
+        <img src="{{tc_avatar}}" alt="">
+        {{else}}
+        <img src="/uploads/avatar.jpg" alt="">
+        {{/if}}
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>花名:</th>
+    <td>{{tc_roster}}</td>
+    <th>出生日期:</th>
+    <td colspan="3">{{tc_birthday}}</td>
+  </tr>
+  <tr>
+    <th>性别:</th>
+    <td>{{if tc_status==0}}
+      男
+      {{else}}
+      女
+      {{/if}}
+    </td>    <th>出生日期:</th>
+    <td colspan="3">{{tc_birthday}}</td>
+  </tr>
+  <tr>
+    <th>手机号码:</th>
+    <td colspan="2">{{tc_cellphone}}</td>
+    <th>邮箱:</th>
+    <td colspan="2">{{tc_email}}</td>
+  </tr>
+  <tr>
+    <th>籍贯:</th>
+    <td colspan="6">{{tc_hometown}}</td>
+  </tr>
+  <tr>
+    <td colspan="7">
+      <div class="introduce">
+        <p>{{@ tc_introduce}}</p>
+      </div>
+    </td>
+  </tr>
+</script>
 <!--列表展示-->
 <script type="text/template" id="tpl">
   {{each list as item  i}}
@@ -131,9 +141,10 @@
     </td>
     <td>{{item.tc_cellphone}}</td>
     <td data-id='{{item.tc_id}}'>
-      <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
+      <a href="#teacherModal" class="btn btn-info btn-xs looks">查 看</a>
       <a href="add.html" class="btn btn-info btn-xs">编 辑</a>
-      <a data-status='{{item.tc_status}}' href="javascript:;" class="btn btn-warning btn-xs startOrStop">{{if item.tc_status == 1}}启用{{else}}注销{{/if}}</a>
+      <a data-status='{{item.tc_status}}' href="javascript:;" class="btn btn-warning btn-xs startOrStop">{{if
+        item.tc_status == 1}}启用{{else}}注销{{/if}}</a>
     </td>
     {{/each}}
   </tr>
