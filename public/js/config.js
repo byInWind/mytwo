@@ -8,6 +8,7 @@ require.config({
     template: 'artTemplate/template-web',
     //自己的
     common: '../js/common',
+    status:'../js/status',
     login: '../js/login',
     index: '../js/index',
     teacherlist: '../js/teacher-list',

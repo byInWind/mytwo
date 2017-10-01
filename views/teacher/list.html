@@ -41,26 +41,14 @@
             <th>编号</th>
             <th>姓名</th>
             <th>昵称</th>
-            <th>年龄</th>
+            <th>入职日期</th>
             <th>性别</th>
             <th>手机号码</th>
             <th>操作</th>
           </tr>
           </thead>
-          <tbody>
-          <tr>
-            <td>1</td>
-            <td>赵玉川</td>
-            <td>布头儿</td>
-            <td>28</td>
-            <td>男</td>
-            <td>15901256171</td>
-            <td>
-              <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
-              <a href="add.html" class="btn btn-info btn-xs">编 辑</a>
-              <a href="javascript:;" class="btn btn-warning btn-xs">注 销</a>
-            </td>
-          </tr>
+          <tbody id="teacherInfo">
+          <!---------------------模板渲染-->
           </tbody>
         </table>
       </div>
@@ -125,6 +113,31 @@
     </div>
   </div>
 </div>
+<!--模态框-->
+
+<!--列表展示-->
+<script type="text/template" id="tpl">
+  {{each list as item  i}}
+  <tr>
+    <td>{{i+1}}</td>
+    <td>{{item.tc_name}}</td>
+    <td>{{item.tc_roster}}</td>
+    <td>{{item.tc_join_date}}</td>
+    <td>{{if item.tc_gender == 1}}
+      男
+      {{else}}
+      女
+      {{/if}}
+    </td>
+    <td>{{item.tc_cellphone}}</td>
+    <td>
+      <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
+      <a href="add.html" class="btn btn-info btn-xs">编 辑</a>
+      <a href="javascript:;" class="btn btn-warning btn-xs">注 销</a>
+    </td>
+    {{/each}}
+  </tr>
+</script>
 <?php include('/views/common/script.html') ?>
 <script>
   require(['teacherlist'])
