@@ -1,11 +1,11 @@
-define(['jquery', 'echarts'], function ($, echarts) {
-
+define(['jquery', 'echarts','util'], function ($, echarts,util) {
+  util.select('/main/index')
 // 基于准备好的dom，初始化echarts实例,用的是dom对象，jquery需要转一下
   var myChart = echarts.init($('#main')[0]);
 // 指定图表的配置项和数据
   var option = {
     title: {
-      text: 'ECharts 入门示例'
+      text: 'ECharts 示例'
     },
     tooltip: {},
     legend: {

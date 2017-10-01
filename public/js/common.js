@@ -1,4 +1,14 @@
 define(['jquery', 'cookie'], function ($) {
+  //处理遮罩层
+  $(document).ajaxStart(function () {
+    $('.overlay').show()
+  })
+  $(document).ajaxStop(function () {
+    setTimeout(function () {
+      $('.overlay').hide()
+    }, 500)
+  })
+  //
   $('.navs ul').prev('a').on('click', function () {
     $(this).next().slideToggle();
   });
@@ -23,4 +33,5 @@ define(['jquery', 'cookie'], function ($) {
 
   $(".aside .profile .avatar img").attr('src', loginInfo.tc_avatar);
   $(".aside .profile h4").html(loginInfo.tc_name)
+
 })
