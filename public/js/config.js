@@ -13,7 +13,8 @@ require.config({
     teacherlist: '../js/teacher-list',
     teacheradd: '../js/teacher-add',
     courselist: '../js/course-list',
-    courseadd: '../js/course-add'
+    courseadd: '../js/course-add',
+    util:'../js/util'
   },
   shim: {}
 })
