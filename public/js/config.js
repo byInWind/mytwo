@@ -13,6 +13,7 @@ require.config({
     language: 'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
     ckeditor: 'ckeditor/ckeditor',
     region: 'jquery-region/jquery.region',
+    uploadify: 'uploadify/jquery.uploadify.min',
     //自己的
     common: '../js/common',
     status: '../js/status',
@@ -38,6 +39,9 @@ require.config({
     //
     ckeditor: {
       exports: 'CKEDITOR'
+    },
+    uploadify: {
+      deps: ['jquery']
     }
   }
 })
