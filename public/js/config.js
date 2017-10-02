@@ -23,6 +23,7 @@ require.config({
     teacheradd: '../js/teacher-add',
     courselist: '../js/course-list',
     courseadd: '../js/course-add',
+    coursebase: '../js/course-base',
     util: '../js/util',
     settings: '../js/settings'
   },
