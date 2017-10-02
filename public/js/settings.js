@@ -29,6 +29,31 @@ define(['jquery', 'template', 'ckeditor', 'validate', 'form', 'datepicker', 'lan
             $(".preview img").attr('src', obj.result.path);
           }
         });
+        //表单
+        $("#setInfo").validate({
+          sendForm: false,
+          valid: function () {
+            var hometown = '';
+            var p = $("#p").find('option:selected').text();
+            var c = $("#c").find('option:selected').text();
+            var d = $("#d").find('option:selected').text();
+            hometown = p + '|' + c + '|' + d;
+            //富文本无法更改，需要用ckeditor的方法更新富文本内容
+            for (var instance in CKEDITOR.instances) {
+              CKEDITOR.instances[instance].updateElement();
+            }
+            $(this).ajaxSubmit({
+              url: '/api/teacher/modify',
+              dataType: 'json',
+              data: {tc_hometown: hometown},
+              success: function (data) {
+                if (data.code == 200) {
+                  location.reload();
+                }
+              }
+            })
+          }
+        })
       }
     }
   });

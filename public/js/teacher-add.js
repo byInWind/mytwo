@@ -36,7 +36,19 @@ define(['jquery', 'template', 'util', 'validate', 'form', 'datepicker', 'languag
               location.href = '/teacher/list';
             }
           }
-        });
+        })
+      },
+      description: {
+        tc_Name: {
+          required: "用户名不能为空"
+        },
+        tc_Pass: {
+          required: "密码不能为空",
+          pattern: "必须是6位数字"
+        },
+        tc_joinData: {
+          required: "日期不能为空"
+        }
       }
     })
   }
