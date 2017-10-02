@@ -7,6 +7,8 @@ require.config({
     echarts: 'echarts/echarts.min',
     template: 'artTemplate/template-web',
     bootstrap: 'bootstrap/js/bootstrap.min',
+    validate: 'validate/jquery-validate.min',
+    form: 'jquery-form/jquery.form',
     //自己的
     common: '../js/common',
     status: '../js/status',
@@ -20,6 +22,9 @@ require.config({
   },
   shim: {
     bootstrap: {
+      deps: ['jquery']
+    },
+    validate: {
       deps: ['jquery']
     }
   }

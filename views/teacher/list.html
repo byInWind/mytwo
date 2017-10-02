@@ -142,7 +142,7 @@
     <td>{{item.tc_cellphone}}</td>
     <td data-id='{{item.tc_id}}'>
       <a href="#teacherModal" class="btn btn-info btn-xs looks">查 看</a>
-      <a href="add.html" class="btn btn-info btn-xs">编 辑</a>
+      <a href="/teacher/add?tc_id={{item.tc_id}}" class="btn btn-info btn-xs">编 辑</a>
       <a data-status='{{item.tc_status}}' href="javascript:;" class="btn btn-warning btn-xs startOrStop">{{if
         item.tc_status == 1}}启用{{else}}注销{{/if}}</a>
     </td>
