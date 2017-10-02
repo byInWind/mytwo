@@ -12,6 +12,7 @@ require.config({
     datepicker: 'bootstrap-datepicker/js/bootstrap-datepicker.min',
     language: 'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
     ckeditor: 'ckeditor/ckeditor',
+    region: 'jquery-region/jquery.region',
     //自己的
     common: '../js/common',
     status: '../js/status',

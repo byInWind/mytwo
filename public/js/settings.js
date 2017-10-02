@@ -1,4 +1,4 @@
-define(['jquery', 'template', 'ckeditor', 'validate', 'form', 'datepicker', 'language'], function ($, template,CKEDITOR) {
+define(['jquery', 'template', 'ckeditor', 'validate', 'form', 'datepicker', 'language','region'], function ($, template,CKEDITOR) {
   $.ajax({
     type: 'get',
     url: '/api/teacher/profile',
@@ -7,7 +7,12 @@ define(['jquery', 'template', 'ckeditor', 'validate', 'form', 'datepicker', 'lan
       if (data.code == 200) {
         var html = template('tpl', data.result);
         $("#selfInfo").html(html);
-        CKEDITOR.replace('introduce')
+
+        CKEDITOR.replace('introduce');
+
+        $('#pcd').region({
+          url: '/public/assets/jquery-region/region.json'
+        });
       }
     }
   });
