@@ -11,6 +11,7 @@ require.config({
     form: 'jquery-form/jquery.form',
     datepicker: 'bootstrap-datepicker/js/bootstrap-datepicker.min',
     language: 'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+    ckeditor: 'ckeditor/ckeditor',
     //自己的
     common: '../js/common',
     status: '../js/status',
@@ -32,6 +33,10 @@ require.config({
     },
     language: {
       deps: ['jquery', 'datepicker']
+    },
+    //
+    ckeditor: {
+      exports: 'CKEDITOR'
     }
   }
 })

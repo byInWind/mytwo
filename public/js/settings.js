@@ -1,4 +1,4 @@
-define(['jquery','template', 'validate', 'form','datepicker','language'],function ($,template) {
+define(['jquery', 'template', 'ckeditor', 'validate', 'form', 'datepicker', 'language'], function ($, template,CKEDITOR) {
   $.ajax({
     type: 'get',
     url: '/api/teacher/profile',
@@ -7,6 +7,7 @@ define(['jquery','template', 'validate', 'form','datepicker','language'],functio
       if (data.code == 200) {
         var html = template('tpl', data.result);
         $("#selfInfo").html(html);
+        CKEDITOR.replace('introduce')
       }
     }
   });
