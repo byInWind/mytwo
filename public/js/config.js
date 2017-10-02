@@ -24,6 +24,8 @@ require.config({
     courselist: '../js/course-list',
     courseadd: '../js/course-add',
     coursebase: '../js/course-base',
+    courselesson: '../js/course-lesson',
+    coursepicture: '../js/course-picture',
     util: '../js/util',
     settings: '../js/settings'
   },
