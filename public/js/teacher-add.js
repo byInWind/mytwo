@@ -1,4 +1,4 @@
-define(['jquery', 'template', 'util', 'validate', 'form'], function ($, template, util, validate) {
+define(['jquery', 'template', 'util', 'validate', 'form', 'datepicker', 'language'], function ($, template, util) {
   util.select('/teacher/list');
   var tcId = util.getId('tc_id');
   if (tcId) {
@@ -33,7 +33,7 @@ define(['jquery', 'template', 'util', 'validate', 'form'], function ($, template
           dataType: 'JSON',
           success: function (data) {
             if (data.code == 200) {
-              location.href='/teacher/list';
+              location.href = '/teacher/list';
             }
           }
         });

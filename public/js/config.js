@@ -9,6 +9,8 @@ require.config({
     bootstrap: 'bootstrap/js/bootstrap.min',
     validate: 'validate/jquery-validate.min',
     form: 'jquery-form/jquery.form',
+    datepicker: 'bootstrap-datepicker/js/bootstrap-datepicker.min',
+    language: 'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
     //自己的
     common: '../js/common',
     status: '../js/status',
@@ -18,7 +20,8 @@ require.config({
     teacheradd: '../js/teacher-add',
     courselist: '../js/course-list',
     courseadd: '../js/course-add',
-    util: '../js/util'
+    util: '../js/util',
+    settings: '../js/settings'
   },
   shim: {
     bootstrap: {
@@ -26,6 +29,9 @@ require.config({
     },
     validate: {
       deps: ['jquery']
+    },
+    language: {
+      deps: ['jquery', 'datepicker']
     }
   }
 })
