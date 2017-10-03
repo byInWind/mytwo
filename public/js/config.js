@@ -14,6 +14,7 @@ require.config({
     ckeditor: 'ckeditor/ckeditor',
     region: 'jquery-region/jquery.region',
     uploadify: 'uploadify/jquery.uploadify.min',
+    jcrop: 'jcrop/js/jcrop',
     //自己的
     common: '../js/common',
     status: '../js/status',
@@ -44,6 +45,9 @@ require.config({
       exports: 'CKEDITOR'
     },
     uploadify: {
+      deps: ['jquery']
+    },
+    jcrop: {
       deps: ['jquery']
     }
   }
