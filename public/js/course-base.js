@@ -8,7 +8,7 @@ define(['jquery', 'template', 'util', 'ckeditor', 'validate', 'form'], function 
     data: {cs_id: csId},
     success: function (data) {
       if (data.code == 200) {
-        data.result.opton = "课程添加";
+        data.result.option = "课程添加";
         var html = template('tpl', data.result);
         $("#baseInfo").html(html);
         CKEDITOR.replace('brief');
