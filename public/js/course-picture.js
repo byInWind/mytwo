@@ -12,6 +12,8 @@ define(['jquery', 'template', 'util', 'uploadify', 'jcrop', 'form'], function ($
       //模板渲染
       var html = template('tpl', data.result);
       $("#pictureInfo").html(html);
+      var nowCrop = null;// 保证裁切实例的唯一性
+
       //图片上传
       $("#myfile").uploadify({
         width: 80,
@@ -29,6 +31,7 @@ define(['jquery', 'template', 'util', 'uploadify', 'jcrop', 'form'], function ($
         formData: {cs_id: csId},
         onUploadSuccess: function (a, b) {
           var obj = JSON.parse(b);
+          $(".preview img").html('');
           $('.preview img').attr('src', obj.result.path);
           cropImg();
           $("#cropBtn").text('保存图片').attr('data-flag', true)
@@ -67,6 +70,8 @@ define(['jquery', 'template', 'util', 'uploadify', 'jcrop', 'form'], function ($
         }, function () {
           //启用缩略图预览
           //先清空里面的内容
+          nowCrop && nowCrop.destroy();
+          nowCrop = this;
           $('.thumb').html('');
           this.initComponent('Thumbnailer', {width: 240, height: 120, mythumb: '.thumb'});
           //获取图片宽高
