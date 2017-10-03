@@ -2,25 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>学IT - 后台管理系统</title>
-  <?php include('/views/common/style.html') ?>
+  <title>后台管理系统</title>
+  <?php include('./views/common/style.html'); ?>
 </head>
 <body>
 
 <!-- 侧边栏 -->
-<?php include('/views/common/aside.html') ?>
+<?php include('./views/common/aside.html'); ?>
 <!-- 主体 -->
 <div class="main">
   <div class="container-fluid">
     <!-- 头部 -->
-    <?php include('/views/common/header.html') ?>
-    <div class="body course-add" id="lessonInfo">
-      <!-- 模板 -->
+    <?php include('./views/common/header.html'); ?>
+
+    <div id="lessonInfo" class="body course-add">
+      <!-- 模板渲染 课程基本信息-->
     </div>
   </div>
 </div>
-<!-- 模态框 添加课程 -->
 <div class="modal fade" id="chapterModal">
+  <!-- 模板渲染 模态框 添加课程 -->
+</div>
+<script type="html/template" id="modalTpl">
   <div class="modal-dialog" style="width: 800px;">
     <div class="modal-content">
       <div class="modal-header">
@@ -28,56 +31,57 @@
         <h4 class="modal-title">添加课时</h4>
       </div>
       <div class="modal-body">
-        <form action="" class="form-horizontal">
+        <form id="lessonForm" class="form-horizontal">
           <div class="form-group">
-            <label for="" class="col-xs-2 control-label">标题</label>
+            <label class="col-xs-2 control-label">标题</label>
 
             <div class="col-xs-6">
-              <input type="text" class="form-control input-sm">
+              <input value="{{ct_name}}" type="text" class="form-control input-sm">
             </div>
             <div class="col-xs-2">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox"> 免费课时
+                  <input {{if ct_is_free==1}}checked{{/if}} name="ct_is_free" type="checkbox"> 免费课时
                 </label>
               </div>
             </div>
           </div>
           <div class="form-group">
-            <label for="" class="col-xs-2 control-label">简介</label>
+            <label class="col-xs-2 control-label">简介</label>
 
             <div class="col-xs-8">
-              <textarea name="" rows="5" class="form-control input-sm"></textarea>
+              <textarea name="ct_brief" rows="5" class="form-control input-sm">{{ct_brief}}</textarea>
             </div>
           </div>
           <div class="form-group">
-            <label for="" class="col-xs-2 control-label">视频</label>
+            <label class="col-xs-2 control-label">视频</label>
 
             <div class="col-xs-8">
               <div class="input-group">
-                <input type="text" class="form-control input-sm" placeholder="支持优酷、土豆、腾讯、网易公开课的视频页面地址导入">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-success btn-sm">获取</button>
-                                    </span>
+                <input value="{{ct_video}}" name="ct_video" type="text" class="form-control input-sm"
+                       placeholder="支持优酷、土豆、腾讯、网易公开课的视频页面地址导入">
+                   <span class="input-group-btn">
+                  <button class="btn btn-success btn-sm">获取</button></span>
               </div>
             </div>
           </div>
           <div class="form-group form-inline">
-            <label for="" class="col-xs-2 control-label">时长</label>
+            <label class="col-xs-2 control-label">时长</label>
 
             <div class="col-xs-8">
-              <input type="text" class="form-control input-sm small">
+              <input value="{{ct_minutes}}" name="ct_minutes" type="text" class="form-control input-sm small">
               分
-              <input type="text" class="form-control input-sm small">
+              <input value="{{ct_seconds}}" name="ct_seconds" type="text" class="form-control input-sm small">
               秒
               <p class="help-block">时长必须为整数。</p>
             </div>
           </div>
           <div class="form-group form-inline">
-            <label for="" class="col-xs-2 control-label">建议学习时长</label>
+            <label class="col-xs-2 control-label">建议学习时长</label>
 
             <div class="col-xs-8">
-              <input type="text" class="form-control input-sm small">
+              <input value="{{ct_recommend_duration}}" name="ct_recommend_duration" type="text"
+                     class="form-control input-sm small">
               小时
               <p class="help-block">（如未设置，则默认学习时长为视频时长3倍取整。）</p>
             </div>
@@ -86,12 +90,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-link btn-sm" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-success btn-sm"> 添 加</button>
+        <button id="editBtn" type="button" class="btn btn-success btn-sm">确 定</button>
       </div>
     </div>
   </div>
-</div>
-<?php include('/views/common/script.html') ?>
+</script>
 <script type="text/template" id="lessonTpl">
   <ol class="breadcrumb">
     <li><a href="javascript:;">课程管理</a></li>
@@ -166,6 +169,7 @@
     </div>
   </div>
 </script>
+<?php include('./views/common/script.html'); ?>
 <script>
   require(['courselesson'])
 </script>
