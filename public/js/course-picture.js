@@ -12,7 +12,6 @@ define(['jquery', 'template', 'util', 'uploadify', 'jcrop', 'form'], function ($
       //模板渲染
       var html = template('tpl', data.result);
       $("#pictureInfo").html(html);
-      var nowCrop = null;// 保证裁切实例的唯一性
 
       //图片上传
       $("#myfile").uploadify({
@@ -39,7 +38,7 @@ define(['jquery', 'template', 'util', 'uploadify', 'jcrop', 'form'], function ($
       });
 
       //选中图片
-      var img = $(".preview img")
+      var img = $(".preview img");
       ////图片裁切
       $("#cropBtn").click(function () {
         var flag = $(this).attr('data-flag');
@@ -63,15 +62,16 @@ define(['jquery', 'template', 'util', 'uploadify', 'jcrop', 'form'], function ($
           cropImg();
         }
       });
+      var  jcrop_api = null;;// 保证裁切实例的唯一性
       //封装一个独立方法实现图片裁切
       function cropImg() {
+        if(jcrop_api) jcrop_api.destroy();
         img.Jcrop({
           aspectRatio: 2//(拖拽时的比例)
         }, function () {
           //启用缩略图预览
           //先清空里面的内容
-          nowCrop && nowCrop.destroy();
-          nowCrop = this;
+          jcrop_api = this;
           $('.thumb').html('');
           this.initComponent('Thumbnailer', {width: 240, height: 120, mythumb: '.thumb'});
           //获取图片宽高
